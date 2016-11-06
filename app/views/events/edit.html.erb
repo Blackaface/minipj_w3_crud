@@ -1,14 +1,5 @@
 <%= form_for @event, :url => event_path(@event), :method => :patch do |f| %>
-
-<%= f.label :name, "Name" %>
-<%= f.text_field :name %>
-
-<%= f.label :description, "Descrioption" %>
-<%= f.text_area :description %>
-
-<%= f.label :isbn, "Isbn" %>
-<%= f.text_field :isbn %>
-
-<%= f.submit "update"%>
+	<%= render :partial => "form", :locals => {:f => f} %>
+	<%= f.submit "update"%>
 
 <% end %>
