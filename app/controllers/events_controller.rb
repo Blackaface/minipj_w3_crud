@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+	before_action :set_event, :only => [:show , :edit , :update, :destroy]
 	def index
 		@events = Event.all
 	end
@@ -15,14 +16,14 @@ class EventsController < ApplicationController
 		end
 	end
 	def show
-		@event = Event.find(params[:id])
+		
 	end
 
 	def edit
-		@event = Event.find(params[:id])
+	
 	end
 	def update
-		@event = Event.find(params[:id])
+		
 		if @event.update(event_params)
 		   redirect_to event_url(@event)
 		else
@@ -30,7 +31,7 @@ class EventsController < ApplicationController
 		end
 	end
 	def destroy
-		@event = Event.find(params[:id])
+		
 		@event.destroy
 
 		redirect_to events_url
@@ -41,5 +42,8 @@ class EventsController < ApplicationController
 private
 	def event_params
 		params.require(:event).permit(:name, :description, :isbn)
+	end
+	def set_event
+		@event = Event.find(params[:id])
 	end
 end
