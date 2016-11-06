@@ -10,10 +10,20 @@ class EventsController < ApplicationController
 		@event = Event.new(event_params)
 		@event.save
 
-		redirect_to events_path
+		redirect_to events_url
 	end
 	def show
 		@event = Event.find(params[:id])
+	end
+
+	def edit
+		@event = Event.find(params[:id])
+	end
+	def update
+		@event = Event.find(params[:id])
+		@event.update(event_params)
+
+		redirect_to event_url(@event)
 	end
 
 
